@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'DSMS') }}</title> --}}
+    <title> @yield('title')</title>
 
     <!-- Scripts -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -19,6 +20,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .ErrorMsg {
+                  color: red;
+        }
+  
+        .SuccessMsg {
+                  color: green;
+        }
+    
+        .errorInputBox {
+            border: 1px solid red !important;
+        }
+  
+        .successInputBox {
+            border: 1px solid green !important;
+        }
+      </style>
 
     
         @include('include.css')
@@ -133,6 +152,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Delete Confirmation Modal-->
+    <div class="modal fade" id="DeleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">Select "Delete" below if you are <strong>Sure</strong> to <strong>Delete</strong> this <strong id="dtn"></strong> Record</div>
+            <div class="modal-footer" style="display: inline">
+            <input type="hidden" id="delete_data_id" value="">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button onclick="deleteTableData($('#delete_data_id').val())" class="btn btn-danger float-right" type="button">Delete</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
 
 </body>
 

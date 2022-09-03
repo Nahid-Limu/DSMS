@@ -11,15 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//         return view('auth.login');
+//     });
+Route::view('/', 'auth.login');
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/company', 'companyController@index')->name('company');
+    Route::get('/company', 'CompanyController@index')->name('company');
+    Route::post('/addCompany', 'CompanyController@addCompany')->name('addCompany');
+    // Route::get('/editTest/{id}', 'TestController@editTest')->name('editTest');
+    // Route::post('/updateTest', 'TestController@updateTest')->name('updateTest');
+    Route::get('/deleteCompany/{id}', 'CompanyController@deleteCompany')->name('deleteCompany');
     
 });
