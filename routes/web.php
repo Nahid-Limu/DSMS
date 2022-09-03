@@ -28,4 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::post('/updateTest', 'TestController@updateTest')->name('updateTest');
     Route::get('/deleteCompany/{id}', 'CompanyController@deleteCompany')->name('deleteCompany');
     
+
+    Route::get('/group', 'GroupController@index')->name('group');
+    Route::post('/addGroup', 'GroupController@addGroup')->name('addGroup');
+    Route::get('/deleteGroup/{id}', 'GroupController@deleteGroup')->name('deleteGroup');
 });
