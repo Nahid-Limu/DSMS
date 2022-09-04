@@ -62,4 +62,19 @@ class GroupController extends Controller
         }
     }
 
+    public function getGroup()
+    {  
+
+        if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('super-admin')){
+
+             $branch = $this->settings->all_branch();
+            return view('backend.ajax.get_branch',compact('branch'));
+        }else{
+             $branch=$this->settings->branchname_loginemployee();
+            //  $branch = $this->settings->all_branch();
+            return view('backend.ajax.get_login_user_branch',compact('branch'));
+        }
+       
+    }
+
 }

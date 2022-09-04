@@ -32,4 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/group', 'GroupController@index')->name('group');
     Route::post('/addGroup', 'GroupController@addGroup')->name('addGroup');
     Route::get('/deleteGroup/{id}', 'GroupController@deleteGroup')->name('deleteGroup');
+
+    Route::get('/product', 'ProductController@index')->name('product');
+    Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
+    Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
+
+    // ====================================AJAX REQUESTS route start===================================
+    // Route::get('/ajax/all_group/{c_id}','ProductController@all_group')->name('ajax.all_group');
+    Route::get('/ajax/company_wise_group/{c_id}','ProductController@company_wise_group')->name('ajax.company_wise_group');
+
+    // ====================================AJAX REQUESTS route end======================================
+
 });

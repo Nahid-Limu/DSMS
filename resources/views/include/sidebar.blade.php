@@ -121,6 +121,7 @@
               <h6 class="collapse-header">Custom Settings:</h6>
               <a class="collapse-item" href="{{ route('company') }}">Company</a>
               <a class="collapse-item" href="{{ route('group') }}">Group</a>
+              <a class="collapse-item" href="{{ route('product') }}">Product</a>
           </div>
       </div>
   </li>
