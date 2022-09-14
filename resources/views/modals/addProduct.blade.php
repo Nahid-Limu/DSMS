@@ -58,8 +58,8 @@
                             <select name="size" id="size" class="form-control">
                                 <option value="">Select Size</option>
                                
-                                    <option value="carton ">1 Carton </option>
-                                    <option value="poly">1 Poly</option>
+                                    <option value="1 carton ">1 Carton </option>
+                                    <option value="1 poly">1 Poly</option>
                                
                             </select>
                             <span id="sizeError"></span>

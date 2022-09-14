@@ -34,7 +34,7 @@ class CompanyController extends Controller
     public function addCompany(Request $request)
     {
         $Company = new Company;
-        $Company->company_name = $request->company_name;
+        $Company->company_name = strtoupper($request->company_name);
         $Company->save();
 
         if ($Company->id) {

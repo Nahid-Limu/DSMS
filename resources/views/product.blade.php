@@ -42,6 +42,7 @@
 
 <!--Modals-->
 @include('modals.addProduct')
+@include('modals.editProduct')
 <!--Modals-->
 
 @endsection
@@ -194,6 +195,73 @@
             });
         }
   }
+
+  function editProduct(Id) {
+      $.ajax({
+        type: 'GET',
+        url: "{{url('editProduct')}}"+"/"+Id,
+        success: function (response) {
+            console.log(response);
+            if (response) {
+            $('#edit_product_id').val(response.id);
+            $('#ecompany_name').text(response.company_name);
+            $('#egroup_name').text('GROUP -> '+response.group_name);
+            $('#eproduct_name').text(response.product_name);
+            $('#esize').text(response.size);
+            $('#epiece').val(response.piece);
+            $('#ebuy_price').val(response.buy_price);
+            $('#esell_price').val(response.sell_price);
+            }
+
+        },error:function(){ 
+            console.log(response);
+        }
+    });
+  }
+
+  function updateProduct (params) {
+   
+        // if ($( "#eexpence_name" ).val() ) {
+        
+        // $("#eexpence_nameError").text('');
+        // $("#eexpence_name" ).removeClass("errorInputBox");
+
+        var myData =  $('#EditProductForm').serialize();
+            // console.log(myData);
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('updateProduct') }}",
+                data: myData,
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        
+                        $("#success_message").text(response.success);
+                        $('#ProductListTable').DataTable().ajax.reload();
+                        $('#EditProductModal').modal('hide');
+                        $("#EditProductForm").trigger("reset");
+                        
+                        SuccessMsg();
+                    }
+
+                },error:function(){ 
+                    console.log(response);
+                }
+            });
+                
+
+        // } else {
+
+        // if ( !$("#eexpence_name" ).val()) {
+        //     $("#eexpence_name").addClass("errorInputBox");
+        //     $("#eexpence_nameError").text('Expence Name Is Required').addClass("ErrorMsg");
+        // } else {
+        //     $("#eexpence_name").removeClass("errorInputBox");
+        //     $("#eexpence_nameError").text('').removeClass("ErrorMsg");
+        // }
+        // }
+  }
+
 
   function deleteTableData(id) {
       // alert(TestId);
