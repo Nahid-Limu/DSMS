@@ -14,32 +14,33 @@
         <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list"> Stock Details</i></h6>
         <strong id="success_message" class="text-success"></strong>
         
-        <div class="dropdown no-arrow">
+        {{-- <div class="dropdown no-arrow">
           <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#AddProductModal"><i class="fas fa-plus fa-fw mr-2 text-gray-400"></i>Add New</button>
-        </div>
+        </div> --}}
       </div>
       <!-- Card Body -->
       <div class="card-body">
         <table id="StockListTable" class="table table-striped table-bordered">
-          <thead>
-              <tr>
-                  <th class="text-center">#NO</th>
-                  <th class="text-center">Company</th>
-                  <th class="text-center">Group</th>
-                  <th class="text-center">Product</th>
-                  <th class="text-center">Size = Piece</th>
-                  <th class="text-center">Piece</th>
-                  <th class="text-center">DP</th>
-                  <th class="text-center">TP</th>
-                  <th class="text-center bg-info">Stock Size</th>
-                  <th class="text-center bg-info">Stock Piece</th>
-                  <th class="text-center bg-info">BP</th>
-                  <th class="text-center bg-info">SP</th>
-                  <th class="text-center">Action</th>
-              </tr>
-          </thead>
+            <thead>
+                <tr>
+                    <th class="text-center">#NO</th>
+                    <th class="text-center">Company</th>
+                    <th class="text-center">Group</th>
+                    <th class="text-center">Product</th>
+                    <th class="text-center">Size = Piece</th>
+                    {{-- <th class="text-center">Piece</th> --}}
+                    <th class="text-center">DP</th>
+                    <th class="text-center bg-success">%</th>
+                    <th class="text-center">TP</th>
+                    <th class="text-center bg-info">Stock Size</th>
+                    <th class="text-center bg-info">Stock Piece</th>
+                    <th class="text-center bg-info">BP</th>
+                    <th class="text-center bg-info">SP</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
   
-      </table>
+        </table>
       </div>
     </div>
 </div>
@@ -58,6 +59,7 @@
       processing: true,
       serverSide: true,
       responsive: true,
+    //   "bAutoWidth": false,
       "order": [[ 0, "asc" ]],
       ajax:{
         url: "{{ route('stock') }}",
@@ -83,13 +85,17 @@
             data: 'sizePiece',
             name: 'sizePiece'
         },
-        {
-            data: 'piece',
-            name: 'piece'
-        },
+        // {
+        //     data: 'piece',
+        //     name: 'piece'
+        // },
         {
             data: 'buy_price',
             name: 'buy_price'
+        },
+        {
+            data: 'percent',
+            name: 'percent'
         },
         {
             data: 'sell_price',

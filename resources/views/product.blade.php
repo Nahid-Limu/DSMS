@@ -30,6 +30,7 @@
                   <th class="text-center">Size</th>
                   <th class="text-center">Piece</th>
                   <th class="text-center">Buy</th>
+                  <th class="text-center">%</th>
                   <th class="text-center">Sell</th>
                   <th class="text-center">Action</th>
               </tr>
@@ -55,6 +56,7 @@
       processing: true,
       serverSide: true,
       responsive: true,
+      "autoWidth": false,
       "order": [[ 0, "asc" ]],
       ajax:{
         url: "{{ route('product') }}",
@@ -87,6 +89,10 @@
         {
             data: 'buy_price',
             name: 'buy_price'
+        },
+        {
+            data: 'percent',
+            name: 'percent'
         },
         {
             data: 'sell_price',
@@ -155,18 +161,18 @@
             $( "#buy_priceError").text('Group Name Is Required').addClass("ErrorMsg");
         }
 
-        if ( $( "#sell_price" ).val() != '' ) {
-            $("#sell_price").removeClass("errorInputBox");
-            $( "#sell_priceError").text('').removeClass("ErrorMsg");
+        if ( $( "#percent" ).val() != '' ) {
+            $("#percent").removeClass("errorInputBox");
+            $( "#percentError").text('').removeClass("ErrorMsg");
             
         } else {
-            $("#sell_price").addClass("errorInputBox");
-            $( "#sell_priceError").text('Group Name Is Required').addClass("ErrorMsg");
+            $("#percent").addClass("errorInputBox");
+            $( "#percentError").text('Percent Name Is Required').addClass("ErrorMsg");
         }
 
-        if ( $( "#company_id" ).val() && $( "#group_id" ).val() && $( "#product_name" ).val() && $( "#size" ).val() && $( "#piece" ).val() && $( "#buy_price" ).val() && $( "#sell_price" ).val() ) {
-            $( "#company_idError,#group_idError,#product_nameError,#sizeError,#pieceError,#buy_priceError,#sell_priceError").text('');
-            $( "#company_id,#group_id,#product_name,#size,#piece,#buy_price,#sell_price").removeClass("errorInputBox");
+        if ( $( "#company_id" ).val() && $( "#group_id" ).val() && $( "#product_name" ).val() && $( "#size" ).val() && $( "#piece" ).val() && $( "#buy_price" ).val() && $( "#percent" ).val() ) {
+            $( "#company_idError,#group_idError,#product_nameError,#sizeError,#pieceError,#buy_priceError,#percentError").text('');
+            $( "#company_id,#group_id,#product_name,#size,#piece,#buy_price,#percent").removeClass("errorInputBox");
           
             var myData =  $('#AddProductForm').serialize();
             // alert(myData);
@@ -210,7 +216,7 @@
             $('#esize').text(response.size);
             $('#epiece').val(response.piece);
             $('#ebuy_price').val(response.buy_price);
-            $('#esell_price').val(response.sell_price);
+            $('#epercent').val(response.percent);
             }
 
         },error:function(){ 

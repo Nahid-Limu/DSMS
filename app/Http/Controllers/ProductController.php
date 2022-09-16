@@ -27,7 +27,7 @@ class ProductController extends Controller
         $Product = DB::table('products')
             ->join('companies', 'products.company_id', '=', 'companies.id')
             ->join('groups', 'products.group_id', '=', 'groups.id')
-            ->select('products.id','companies.company_name','groups.group_name','products.product_name','products.size','products.piece','products.buy_price','products.sell_price')
+            ->select('products.id','companies.company_name','groups.group_name','products.product_name','products.size','products.piece','products.buy_price','products.percent','products.sell_price')
             ->orderBy('products.group_id','products.company_id')
             ->get();
         // dd($Product );
@@ -62,7 +62,8 @@ class ProductController extends Controller
         $Product->size = ucwords($request->size);
         $Product->piece = (int) $request->piece;
         $Product->buy_price = (int) $request->buy_price;
-        $Product->sell_price = (float) $request->sell_price;
+        $Product->percent = (float) $request->percent;
+        $Product->sell_price = (float) ( ($request->percent / 100) * $request->buy_price) +$request->buy_price;
         $Product->status = 1;
         $Product->save();
 
@@ -84,11 +85,11 @@ class ProductController extends Controller
         $Product = DB::table('products')
             ->join('companies', 'products.company_id', '=', 'companies.id')
             ->join('groups', 'products.group_id', '=', 'groups.id')
-            ->select('products.id as id','companies.company_name','groups.group_name','products.product_name','products.size','products.piece','products.buy_price','products.sell_price')
+            ->select('products.id as id','companies.company_name','groups.group_name','products.product_name','products.size','products.piece','products.buy_price','products.percent')
             ->orderBy('products.group_id','products.company_id')
             ->where('products.id',$id)
             ->first();
-        // dd($Product->id);
+        // dd($Product);
         return response()->json($Product);
     }
 
@@ -98,7 +99,8 @@ class ProductController extends Controller
         $Product = Product::find($request->id);
         $Product->piece = $request->piece;
         $Product->buy_price = $request->buy_price;
-        $Product->sell_price = $request->sell_price;
+        $Product->percent = (float) $request->percent;
+        $Product->sell_price = (float) ( ($request->percent / 100) * $request->buy_price) +$request->buy_price;
         $Product->save();
     
         if ($Product->id) {

@@ -15,11 +15,11 @@
 
                 <form id="StockProductForm">  
                     @csrf
-                    <input type="text" id="product_id" name="id">
-                    <input type="text" id="old_stock_size" name="">
-                    <input type="text" id="old_stock_piece" name="">
-                    <input type="text" id="piece" name="">
-                    <input type="number" id="total_stock_piece_original" name="">
+                    <input type="hidden" id="product_id" name="id">
+                    <input type="hidden" id="old_stock_size" name="">
+                    <input type="hidden" id="old_stock_piece" name="">
+                    <input type="hidden" id="piece" name="">
+                    <input type="hidden" id="total_stock_piece_original" name="">
                     <h6 class="text-center text-success">Product Details</h6>
                     <hr>
                     <div class="form-row">

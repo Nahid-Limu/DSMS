@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('size')->nullable();
             $table->integer('piece')->nullable();
             $table->double('buy_price')->nullable();
+            $table->double('percent')->nullable();
             $table->double('sell_price')->nullable();
             $table->tinyInteger('status')->comment('"1" is active or  "0" deactive')->default(1);
             $table->timestamps();

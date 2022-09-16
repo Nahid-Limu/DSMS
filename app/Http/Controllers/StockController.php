@@ -29,7 +29,7 @@ class StockController extends Controller
             ->join('groups', 'products.group_id', '=', 'groups.id')
             ->leftJoin('stocks', 'products.id', '=', 'stocks.product_id')
             ->select('products.id','companies.company_name','groups.group_name','products.product_name',
-            'products.size','products.piece','products.buy_price','products.sell_price','stocks.stock_size',
+            'products.size','products.piece','products.buy_price','products.percent','products.sell_price','stocks.stock_size',
              DB::raw("((products.piece  * stocks.stock_size )) as `stock_piece`"),
             //  DB::raw("((products.buy_price  / products.piece ) * (products.piece  * stocks.stock_size ) )  as `invest`"),
             //  DB::raw("((products.sell_price  / products.piece ) * (products.piece  * stocks.stock_size ) )  as `sell`"),
@@ -79,7 +79,7 @@ class StockController extends Controller
                     })
 
                     ->addColumn('action', function($data){
-                        $button = '<button type="button" onclick="getStockProductViewData('.$data->id.')" name="delete" id="'.$data->id.'" class="delete btn btn-sm btn-success" data-toggle="modal" data-target="#StockProductModal" data-placement="top" title="Delete"  style="color: "><i class="fa fa-database"> Stock</i></button></div>';
+                        $button = '<button type="button" onclick="getStockProductViewData('.$data->id.')" name="delete" id="'.$data->id.'" class="delete btn btn-sm btn-success" data-toggle="modal" data-target="#StockProductModal" data-placement="top" title="Stock Product"  style="color: "><i class="fa fa-database"> Stock</i></button></div>';
                         
                         return $button;
                     })

@@ -69,11 +69,11 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label class="form-control" for="esell_price">Sell Price</label>
+                            <label class="form-control" for="epercent">Percent</label>
                         </div>
                         <div class="form-group col-md-8">
-                            <input type="number" class="form-control" id="esell_price" name="sell_price" placeholder="">
-                            <span id="esell_priceError"></span>
+                            <input type="number" class="form-control" id="epercent" name="percent" placeholder="">
+                            <span id="epercentError"></span>
                         </div>
                     </div>
 
