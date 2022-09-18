@@ -16,6 +16,8 @@
                 <form id="StockProductForm">  
                     @csrf
                     <input type="hidden" id="product_id" name="id">
+                    <input type="hidden" id="company_id" name="company_id">
+                    <input type="hidden" id="group_id" name="group_id">
                     <input type="hidden" id="old_stock_size" name="">
                     <input type="hidden" id="old_stock_piece" name="">
                     <input type="hidden" id="piece" name="">

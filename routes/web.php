@@ -51,7 +51,16 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
     // ====================================Stock===================================
 
+    // ====================================Delivery===================================
+    Route::get('/delivery', 'DeliveryController@index')->name('delivery');
+    // Route::get('/getProduct/{c_id}/{g_id}', 'DeliveryController@getProduct')->name('getProduct');
+    Route::get('/getProduct/{c_id}/{g_id}', 'DeliveryController@getProduct')->name('getProduct');
+    // Route::post('/addStock', 'DeliveryController@addStock')->name('addStock');
+    // Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
+    // ====================================Delivery===================================
+
     // ====================================AJAX REQUESTS route start===================================
+    Route::get('/ajax/all_company','CompanyController@all_company')->name('ajax.all_company');
     // Route::get('/ajax/all_group/{c_id}','ProductController@all_group')->name('ajax.all_group');
     Route::get('/ajax/company_wise_group/{c_id}','ProductController@company_wise_group')->name('ajax.company_wise_group');
 

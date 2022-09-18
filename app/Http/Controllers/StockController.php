@@ -91,7 +91,7 @@ class StockController extends Controller
         $Company = Company::all(['id','company_name']);
         $Group = Group::all(['id','group_name']);
         
-        return view('stock', compact('Company','Group'));
+        // return view('stock', compact('Company','Group'));
         return view('stock');
     }
 
@@ -103,7 +103,7 @@ class StockController extends Controller
             ->leftJoin('stocks', 'products.id', '=', 'stocks.product_id')
             ->join('companies', 'products.company_id', '=', 'companies.id')
             ->join('groups', 'products.group_id', '=', 'groups.id')
-            ->select('stocks.id as id','products.product_name','products.size','products.piece','products.buy_price','products.sell_price','stocks.stock_size','stocks.stock_piece')
+            ->select('companies.id as company_id','groups.id as group_id','stocks.id as id','products.product_name','products.size','products.piece','products.buy_price','products.sell_price','stocks.stock_size','stocks.stock_piece')
             ->orderBy('products.group_id','products.company_id')
             ->where('products.id',$id)
             ->first();
@@ -115,7 +115,7 @@ class StockController extends Controller
 
     public function addStock(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $Stock = Stock::find($request->id);
         $Stock->stock_size = $request->total_stock_size;
         $Stock->stock_piece = $request->total_stock_piece;

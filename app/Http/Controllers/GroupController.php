@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Company;
 use App\Group;
+use App\Product;
+use App\Stock;
 use DB;
 
 class GroupController extends Controller
@@ -54,6 +56,8 @@ class GroupController extends Controller
     public function deleteGroup($id)
     {
         $Group = Group::find($id)->delete();
+        $Product = Product::where('group_id',$id)->delete();
+        $Stock = Stock::where('group_id',$id)->delete();
         // $flight->delete();
         if ($Group) {
             return response()->json(['success' => 'Delete successfully !!!']);

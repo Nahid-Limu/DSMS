@@ -107,6 +107,14 @@
 
   <!-- Nav Item - Tables -->
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('delivery') }}">
+            <i class="fas fa-fw fa-shipping-fast"></i>
+            <span>Delivery</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('stock') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Stock</span>

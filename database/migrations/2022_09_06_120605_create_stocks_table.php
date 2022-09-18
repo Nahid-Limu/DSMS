@@ -15,6 +15,8 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id')->nullable()->index();
+            $table->integer('group_id')->nullable()->index();
             $table->integer('product_id')->nullable()->index();
             $table->double('stock_size')->nullable();
             $table->integer('stock_piece')->nullable();

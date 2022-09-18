@@ -177,6 +177,8 @@
             console.log(response);
             if (response) {
             $('#product_id').val(response.id);
+            $('#company_id').val(response.company_id);
+            $('#group_id').val(response.group_id);
             $('#piece').val(response.piece);
 
             $('#product_name').text(response.product_name);
